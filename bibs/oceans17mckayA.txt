@@ -1,0 +1,7 @@
+@inproceedings{mckay2017using,
+  title={Using Frame Theoretic Convolutional Gridding for Robust Synthetic Aperture Sonar Imaging},
+  author={McKay, John and Gelb, Anne and Monga, Vishal and Raj, Raghu},
+  booktitle={OCEANS 2017 MTS/IEEE Anchorage},
+  year={2017},
+  organization={IEEE}
+}

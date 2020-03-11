@@ -1,0 +1,8 @@
+@inproceedings{mckay2016robust,
+  title={Robust Sonar ATR with pose corrected sparse reconstruction-based classification},
+  author={McKay, John and Monga, Vishal and Raj, Raghu},
+  booktitle={OCEANS 2016 MTS/IEEE Monterey},
+  pages={1--5},
+  year={2016},
+  organization={IEEE}
+}

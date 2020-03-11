@@ -1,0 +1,8 @@
+@inproceedings{mckay2017whats,
+  title={What's Mine is Yours: Pretrained CNNs for Limited Training Sonar ATR},
+  author={McKay, John and Gerg, Isaac and Monga, Vishal and Raj, Raghu},
+  booktitle={OCEANS 2017 MTS/IEEE Anchorage},
+  year={2017},
+  organization={IEEE}
+}
+

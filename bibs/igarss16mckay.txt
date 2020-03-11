@@ -1,0 +1,8 @@
+@inproceedings{mckay2016localized,
+  title={Localized dictionary design for geometrically robust sonar atr},
+  author={McKay, John and Monga, Vishal and Raj, Raghu},
+  booktitle={Geoscience and Remote Sensing Symposium (IGARSS), 2016 IEEE International},
+  pages={991--994},
+  year={2016},
+  organization={IEEE}
+}

@@ -1,0 +1,7 @@
+@inproceedings{mckay2015discriminative,
+  title={Discriminative Sparsity for Sonar ATR},
+  author={McKay, John and Raj, Raghu and Monga, Vishal and Isaacs, Jason},
+  booktitle={OCEANS 2015 - MTS/IEEE Washington},
+  pages={1--6},
+  year={2015}
+}

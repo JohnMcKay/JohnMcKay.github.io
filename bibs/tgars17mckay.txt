@@ -1,0 +1,7 @@
+@article{mckay2017robust,
+  title={Robust Sonar ATR Through Bayesian Pose-Corrected Sparse Classification},
+  author={McKay, John and Monga, Vishal and Raj, Raghu G},
+  journal={IEEE Transactions on Geoscience and Remote Sensing},
+  year={2017},
+  publisher={IEEE}
+}

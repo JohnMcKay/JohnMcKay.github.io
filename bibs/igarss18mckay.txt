@@ -1,0 +1,7 @@
+@inproceedings{mckay2018bridging,
+  title={Bridging the Gap: Simultaneous Fine Tuning for Data Re-Balancing},
+  author={McKay, John and Gerg, Isaac, and Monga, Vishal},
+  booktitle={Geoscience and Remote Sensing Symposium (IGARSS), 2018 IEEE International},
+  year={2018},
+  organization={IEEE}
+}
