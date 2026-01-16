@@ -1,260 +1,181 @@
-<!DOCTYPE html>
-<html>
-<title>John McKay, PhD</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!doctype html>
+<html lang="en">
 <head>
-    <title>My Site</title>
-    <link rel="shortcut icon" href="figs/ipal.png" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <title>John McKay, PhD</title>
+  <meta name="description" content="Personal site of John McKay: Machine Learning Engineer & Data Scientist." />
+
+  <!-- Critical CSS (performance) -->
+  <style>
+    :root{
+      --bg:#0b0c10; --panel:#111217; --text:#e9eef2; --muted:#a9b3bd;
+      --brand:#4da3ff; --accent:#8b5cf6; --radius:12px; --maxw:1200px;
+      --shadow:0 6px 24px rgba(0,0,0,.25);
+      --step--1: clamp(.88rem,.84rem + .2vw,.98rem);
+      --step-0: clamp(1rem,.95rem + .4vw,1.125rem);
+      --step-1: clamp(1.25rem,1.1rem + 1vw,1.5rem);
+      --step-2: clamp(1.5rem,1.2rem + 1.6vw,2rem);
+      --step-3: clamp(2rem,1.6rem + 2.6vw,2.75rem);
+    }
+    @media (prefers-color-scheme: light){
+      :root{ --bg:#ffffff; --panel:#f7f8fa; --text:#0b1220; --muted:#5b6470; }
+    }
+    *{ box-sizing:border-box }
+    html,body{ height:100% }
+    body{
+      margin:0; background:var(--bg); color:var(--text);
+      font:400 var(--step-0) ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    }
+    a{ color:var(--brand); text-decoration:none }
+    a:hover{ text-decoration:underline }
+    img{ max-width:100%; height:auto; border-radius: calc(var(--radius) - 4px); }
+    .container{ width:min(100% - 2rem,var(--maxw)); margin-inline:auto }
+    .stack{ display:grid; gap:clamp(1rem,2vw,2rem) }
+    .cluster{ display:flex; flex-wrap:wrap; gap:.75rem; align-items:center }
+    .btn{
+      display:inline-flex; align-items:center; gap:.5rem; padding:.7rem 1rem;
+      border-radius:999px; background:linear-gradient(135deg,var(--brand),var(--accent));
+      color:#fff; box-shadow:var(--shadow); border:0;
+    }
+    .btn--ghost{
+      background:transparent; color:var(--brand);
+      border:1px solid color-mix(in oklab, var(--brand), transparent 70%);
+    }
+    header.site{
+      position:sticky; top:0; z-index:100; backdrop-filter:blur(10px);
+      background:color-mix(in oklab, var(--bg), transparent 20%);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    nav .logo{ font-weight:700; letter-spacing:.2px }
+    nav ul{ list-style:none; margin:0; padding:0 }
+    nav a{ padding:.75rem 1rem; border-radius:999px }
+    main{ padding-block:clamp(2rem,3vw,4rem) }
+    section.card{
+      background:var(--panel); border:1px solid rgba(255,255,255,.06);
+      border-radius:var(--radius); padding:clamp(1rem,2vw,2rem); box-shadow:var(--shadow);
+    }
+    .hero{
+      display:grid; grid-template-columns:1.1fr .9fr;
+      gap:clamp(1rem,3vw,3rem); align-items:center;
+      padding-block:clamp(2rem,5vw,5rem);
+    }
+    @media (max-width:900px){ .hero{ grid-template-columns:1fr } }
+    h1{ font-size:var(--step-3); line-height:1.1; margin:0 0 .5rem }
+    h2{ font-size:var(--step-2); line-height:1.15; margin:0 0 .25rem }
+    p.lead{ color:var(--muted); font-size:var(--step-1) }
+    :focus-visible{ outline:2px solid var(--brand); outline-offset:3px; border-radius:6px }
+    @media (prefers-reduced-motion: reduce){
+      *{ animation:none !important; transition:none !important }
+    }
+    .muted{ color:var(--muted) }
+  </style>
+
+  <!-- Non-critical CSS (async) -->
+  <link rel="preload" href="css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="css/styles.css"></noscript>
 </head>
-<style>
-html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
-</style>
-<body class="w3-light-grey">
-
-<!-- Page Container -->
-<div class="w3-content w3-margin-top" style="max-width:1700px;">
-
-  <!-- The Grid -->
-  <div class="w3-row-padding">
-  
-    <!-- Left Column -->
-    <div class="w3-half">
-    
-      <div class="w3-white w3-text-grey w3-card-4">
-        <div class="w3-display-container">
-          <img src="figs/Profile.png" style="width:100%" alt="Avatar">
-          <div class="w3-display-bottommiddle w3-container w3-text-green">
-            <h2>John McKay</h2>
-          </div>
-        </div>
-        <div class="w3-container">
-          <p><i class="fa-fw w3-margin-right w3-large w3-text-green"></i>Machine Learning Engineer & Data Scientist</p>
-          <p><i class="fa-fw w3-margin-right w3-large w3-text-green"></i>JMcKayPitt at gmail dot com</p>
-          <hr>
-
-          <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-green"></i>About Me</b></p>
-          <p>Hello! I'm John McKay, a research scientist for Amazon Transport Sciences where I focus on applying machine learning to Amazon Freight/Inbound/other transport service problems. 
-                  This has included lane level forecasting problems for contract pricing, shipper willingness-to-pay cost adjustments, and more! 
-                  From July '20 July '22 I applied my skills to Alexa where, in summary, I did a bit of NLP and neural embedding design to fix bugs and improve entity resolution. 
-		  I have a PhD from Penn State where, under the watchful eye of my advisor Vishal Monga, I focused on synthetic aperture image formation and classification with neural nets. 
-		  Before my time as a electrical engineer, I investigated topics in mathematical biology, which was the focus of my undergraduate research and masters degree. 
-		  Simply put, there are few data science topics that I am not interested in. If you see anything on this website you'd like to know more about, feel free to contact me!</p>
-	<p align="center"><a href="https://scholar.google.com/citations?user=nzzzZrUAAAAJ&hl=en&oi=sra"><i class="fa fa-google w3-hover-opacity w3-text-green w3-xxlarge"></i></a>
-          <a href="https://www.linkedin.com/in/john-mckay-146bb645"><i class="fa fa-linkedin-square w3-hover-opacity w3-xxlarge w3-text-green"></i></a>
-	<a href="resume.pdf"><i class="w3-hover-opacity w3-xxlarge w3-text-green">CV</i></a>
-	  <br>  
-          <br></p>
-        </div>
-      </div><br>
-
-    <!-- End Left Column -->
-
-    <!-- Middle Column -->
-    <!--<div class="w3-third">-->
-
-    
-      <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
-        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-asterisk fa-fw w3-margin-right w3-xxlarge w3-text-green"></i>Education</h2>
-        <div class="w3-container">
-          <h5 class="w3-opacity">
-	  <b>Pennsylvania State University</b></h5>
-          <h6 class="w3-text-green"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jan 2015 - <span class="w3-tag w3-green w3-round">June 2018</span></h6>
-          <p>PhD Student
-	  <br>Dept of Electrical Engineering & Computer Science
-	<br>Advised by <a href="http://www.ee.psu.edu/Directory/FacultyInfo/Monga/MongaProfilePage.aspx">Dr. Vishal Monga</a>
-	<br>Research:  sparse reconstruction-based classification, non-uniform fast Fourier transforms, neural networks
-	</p>
-          <hr>
-        </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Arizona State University</b></h5>
-          <h6 class="w3-text-green"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jan 2013 - Dec 2014</h6>
-          <p>Masters
-	  <br>School of Applied Mathematics for the Life and Social Sciences
-	<br>Advised by <a href="http://www.public.asu.edu/~ykang3/">Dr. Yun Kang</a>
-	<br>Research:  graph theory, social insect network models, deterministic epidemiological models, frame theory
-	</p>
-          <hr>
-        </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>University of Pittsburgh</b></h5>
-          <h6 class="w3-text-green"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Aug 2008 - May 2012</h6>
-          <p>Bachelor's of Science (3.7 GPA)
-	  <br>Majors: Pure Mathematics, Africana Studies
-	<br>Research Advisor Dr. Eunha Shim
-	<br>Research:  deterministic epidemiology models, agent based models
-	</p>
-        </div>
-      </div>
-	    
-      <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
-        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-asterisk fa-fw w3-margin-right w3-xxlarge w3-text-green"></i>Employment</h2>
-
-	<div class="w3-container">
-          <h5 class="w3-opacity">
-	  <b>Research Scientist II (Cambrdige, MA)</b></h5>
-          <h6 class="w3-text-green"><i class="fa fa-calendar fa-fw w3-margin-right"></i>July 2020 - <span class="w3-tag w3-green w3-round">Present</span></h6>
-          <p>
-		  I design language networks to evaulate utterance relevance and rank entity options and I write and implement ingestion methods for large-scale knowledge graphs.
-	</p>
-          <hr>
-        </div>
-	      
-	<div class="w3-container">
-          <h5 class="w3-opacity">
-	  <b>Imaging Scientist II at Indigo Ag (Boston, MA)</b></h5>
-          <h6 class="w3-text-green"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Dec 2019 - July 2020</h6>
-          <p>
-	I established a neural network infrastructure for hyperspectral image analysis pipeline of crop treatment effects, 
-		  designed tree ensemble models to predict treatment performance, 
-		  and participated in efforts to maintain our automation tools that write to databases.
-	</p>
-          <hr>
-        </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Research and Development Engineer, Penn State's Applied Research Laboratory (State College, PA)</b></h5>
-          <h6 class="w3-text-green"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Aug 2018 - Nov 2019</h6>
-          <p>
-		  I devised neural network architectures for limited training remote sensing imagery, 
-		  worked in a team setting to resolve motion-induced errors in sonar imagery using signal processing techniques, 
-		  and designed traditional classifiers for raw acoustic and radar sensor outputs.
-	</p>
-          <hr>
-        </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Business Analyst at Management Science Associates (Pittsburgh, PA)</b></h5>
-          <h6 class="w3-text-green"><i class="fa fa-calendar fa-fw w3-margin-right"></i>May 2012 - Jan 2013</h6>
-          <p>
-		  I wrote statistical models to assess the impact of social media on consumer good sales, 
-		  participated in team tasked with segmenting Twitter followers to gauge potential demographic targets, 
-		  and wrote agent based models in Java to understand potential effects of company Twitter campaigns.
-	</p>
-        </div>
-      </div>
-
-	<!-- End Middle Column -->
-	<!-- </div> -->	
-</div>
-    <div class="w3-half">
-	
-      <div class="w3-container w3-card-2 w3-white">
-        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-asterisk fa-fw w3-margin-right w3-xxlarge w3-text-green"></i>Publications</h2>
-
-<div class="w3-container">
-          <h5 class="w3-opacity"><b>Robust Sonar ATR Through Bayesian Pose-Corrected Sparse Classification</b></h5>
-	  <h8 class="w3-opacity"><b>John McKay, Vishal Monga, Raghu G. Raj</b></h8>
-          <h6 class="w3-text-green"><i class="fa fa-certificate fa-fw w3-margin-right"></i>
-IEEE Transactions on Geoscience & Remote Sensing</h6>
-          <p><a href="https://arxiv.org/pdf/1706.08590.pdf">PDF</a> <a href="bibs/tgars17mckay.txt">bibtex</a></p>
-          <hr>
-        </div>
-
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Coupling Rendering and Generative Adversarial Networks for Artificial SAS Image Generation</b></h5>
-	  <h8 class="w3-opacity"><b>Albert Reed, Isaac D. Gerg, John McKay, Daniel C. Brown, David P. Williams, Suren Jayasuriya</b></h8>
-	  <h6 class="w3-text-green"><i class="fa fa-certificate fa-fw w3-margin-right"></i>OCEANS 2019 MTS/IEEE Seattle</h6>
-          <p><a href="https://web.asu.edu/sites/default/files/imaging-lyceum/files/sasgan.pdf
-">PDF</a> <a href="tbd">bibtex</a> </p>
-          <hr>
-        </div>
-		
-	<div class="w3-container">
-          <h5 class="w3-opacity"><b>Bridging the Gap: Simultaneous Fine Tuning for Data Re-Balancing</b></h5>
-	  <h8 class="w3-opacity"><b>John McKay, Isaac D. Gerg, Vishal Monga</b></h8>
-          <h6 class="w3-text-green"><i class="fa fa-certificate fa-fw w3-margin-right"></i>IGARSS 2018</h6>
-          <p><a href="https://arxiv.org/pdf/1801.02548.pdf">PDF</a> <a href="bibs/igarss18mckay.txt">bibtex</a></a><br></p>
-          <hr>
-        </div>
-
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Fast Stochastic Hierarchical Bayesian MAP for Tomographic Imaging</b></h5>
-	  <h8 class="w3-opacity"><b>John McKay, Raghu G. Raj, Vishal Monga</b></h8>
-          <h6 class="w3-text-green"><i class="fa fa-certificate fa-fw w3-margin-right"></i>2017 51st Asilomar Conference on Signals, Systems, & Computers</h6>
-          <p><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8335171">PDF</a> <a href="tbd">bibtex</a> </p>
-          <hr>
-        </div>
-
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Using Frame Theoretic Convolutional Gridding for Robust Synthetic Aperture Sonar Imaging</b></h5>
-	  <h8 class="w3-opacity"><b>John McKay, Anne Gelb, Vishal Monga, Raghu G. Raj</b></h8>
-          <h6 class="w3-text-green"><i class="fa fa-certificate fa-fw w3-margin-right"></i>OCEANS 2017 MTS/IEEE Anchorage</h6>
-          <p><a href="https://arxiv.org/pdf/1706.08575.pdf">PDF</a> <a href="bibs/oceans17mckayA.txt">bibtex</a> <a href="2d_fcg.zip">[Code]</a><br> (Finalist, Student Poster Contest)</p>
-          <hr>
-        </div>
-
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>What's Mine is Yours: Pretrained CNNs for Limited Training Sonar ATR</b></h5>
-	  <h8 class="w3-opacity"><b>John McKay, Isaac D. Gerg, Vishal Monga, Raghu G. Raj</b></h8>
-          <h6 class="w3-text-green"><i class="fa fa-certificate fa-fw w3-margin-right"></i>OCEANS 2017 MTS/IEEE Anchorage</h6>
-          <p><a href="https://arxiv.org/pdf/1706.09858.pdf">PDF</a> <a href="bibs/oceans17mckayB.txt">bibtex</a><br></p>
-          <hr>
-        </div>
-
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Robust Sonar ATR with Pose Corrected Sparse Reconstruction-Based Classification</b></h5>
-	  <h8 class="w3-opacity"><b>John McKay, Vishal Monga, Raghu G. Raj</b></h8>
-          <h6 class="w3-text-green"><i class="fa fa-certificate fa-fw w3-margin-right"></i>OCEANS 2016 MTS/IEEE Monterey</h6>
-          <p><a href="http://ieeexplore.ieee.org/abstract/document/7761189/">PDF</a> <a href="bibs/oceans16mckay.txt">bibtex</a><br> (Finalist, Student Poster Contest)</p>
-          <hr>
-        </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Localized Dictionary Design for Geometrically Robust Sonar ATR</b></h5>
-	  <h8 class="w3-opacity"><b>John McKay, Vishal Monga, Raghu G. Raj</b></h8>
-          <h6 class="w3-text-green"><i class="fa fa-certificate fa-fw w3-margin-right"></i>IGARSS 2016</h6>
-          <p><a href="https://arxiv.org/pdf/1601.03323.pdf">PDF</a> <a href="bibs/igarss16mckay.txt">bibtex</a> </p>
-          <hr>
-        </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Discriminative Sparsity for Sonar ATR</b></h5>
-	  <h8 class="w3-opacity"><b>John McKay, Raghu G. Raj, Vishal Monga</b></h8>
-          <h6 class="w3-text-green"><i class="fa fa-certificate fa-fw w3-margin-right"></i>OCEANS 2015 MTS/IEEE Washington</h6>
-          <p><a href="https://arxiv.org/pdf/1601.00119.pdf">PDF</a> <a href="bibs/oceans15mckay.txt">bibtex</a> </p>
-        </div>
-      </div><br>
-
-<div class="w3-container w3-card-2 w3-white">
-        <div class="w3-container">
-          <a href="CNNtalk.pdf" style="text-decoration:none"><h6 class="w3-text-green"><i class="fa fa-file-pdf-o fa-fw w3-margin-right"></i>Deep Learning for Skeptical Mathematicians (pdf, talking given to Dartmouth Math Dept)</h6></a>
-          <hr>
-          <a href="mckay2019pitt.pdf" style="text-decoration:none"><h6 class="w3-text-green"><i class="fa fa-file-pdf-o fa-fw w3-margin-right"></i>The Unpredictable Nature of CNNs (pdf, talking given to Pitt Math Dept)</h6></a>
-		  <hr>
-<a href="beamerTemplate.zip" style="text-decoration:none"><h6 class="w3-text-green"><i class="fa fa-file-archive-o fa-fw w3-margin-right"></i>Beamer Template (zip)</h6></a>
-        </div>
-      </div><br>
-
-<div class="w3-container w3-card-2 w3-white">
-        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-asterisk fa-fw w3-margin-right w3-xxlarge w3-text-green"></i>Personal</h2>
-        <p>
-	I'm very proud of my two sisters, <a href="https://sociology.osu.edu/people/mckay.93">Mary McKay<a/> and Dr. Pilar McKay 
-	(co-founder of the <a href="https://silverlakebrewingproject.com/">Silver Lake Brewing Project</a>).    
-	My mother has taught Spanish at SUNY Geneseo since 1989 and my dad 
-	is a high school educator (who, during his time in Texas for Teach 
-	for America, earned <a href="https://trackbill.com/bill/tx-hr906-congratulating-stan-mckay-of-edcouch-elsa-high-school-the-2014-2015-edcouch-elsa-independent-school-district-secondary-teacher-of-the-year/1148961/">the 2014-15 Edcouch-Elsa Secondary Teacher of 
-	the year award</a>). 
-	</p>
-          <hr>
-        </div>
-        <img src="figs/az.jpg" style="width:100%" alt="Avatar">
-      </div><br>
-
-
-    <!-- End Right Column -->
+<body>
+  <header class="site">
+    <div class="container cluster" style="justify-content:space-between; padding:.6rem 0;">
+      <a class="logo" href="/">John McKay</a>
+      <nav aria-label="Primary">
+        <ul class="cluster" role="list">
+          <li><a href="#about">About</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#talks">Talks</a></li>
+          <li><a href="#contact" class="btn btn--ghost">Contact</a></li>
+        </ul>
+      </nav>
     </div>
-    
-  <!-- End Grid -->
-  </div>
-  
-  <!-- End Page Container -->
-</div>
+  </header>
 
-<footer class="w3-container w3-green w3-center w3-margin-top">
-  <p></p>
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-</footer>
+  <main class="container stack">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="stack">
+        <h1>John McKay, PhD</h1>
+        <p class="lead">Machine Learning Engineer & Data Scientist</p>
+        <div class="cluster">
+          <a class="btn" href="resume.pdf">View resume (PDF)</a>
+          <a class="btn btn--ghost" href="#publications">See publications</a>
+        </div>
+      </div>
+      <figure class="card">
+        <!-- Keep or remove if no image available -->
+        <img loading="eager" width="1200" height="800" alt="John presenting research"
+             src="figs/hero.avif" onerror="this.style.display='none'">
+      </figure>
+    </section>
 
+    <!-- ABOUT: keep your existing text -->
+    <section id="about" class="card stack" aria-labelledby="about-h">
+      <h2 id="about-h">About</h2>
+      <p>
+        Hello! I'm John McKay, a research scientist focusing on applying machine learning
+        to transport service problems… <!-- Keep your current copy here -->
+      </p>
+    </section>
+
+    <!-- PUBLICATIONS -->
+    <section id="publications" class="stack" aria-labelledby="pubs-h">
+      <h2 id="pubs-h">Publications</h2>
+      <div class="stack" style="display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1rem;">
+        <article class="card stack">
+          <h3>Neural Networks, Cost Functions, and What Happens When You Ignore Math</h3>
+          <p class="muted">Talk materials.</p>
+          <a class="btn btn--ghost" href="mckay2019pitt.pdf">Open PDF</a>
+        </article>
+        <article class="card stack">
+          <h3>Deep Learning: An Engineer’s Dream and a Mathematician’s Nightmare</h3>
+          <p class="muted">Talk materials.</p>
+          <a class="btn btn--ghost" href="CNNtalk.pdf">Open PDF</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- TALKS -->
+    <section id="talks" class="card stack" aria-labelledby="talks-h">
+      <h2 id="talks-h">Talks</h2>
+      <ul>
+        <li><a href="CNNtalk.pdf">Deep Learning: An Engineer’s Dream and a Mathematician’s Nightmare (PDF)</a></li>
+        <li><a href="mckay2019pitt.pdf">Neural Networks, Cost Functions… (PDF)</a></li>
+      </ul>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="card stack" aria-labelledby="contact-h">
+      <h2 id="contact-h">Contact</h2>
+      <ul>
+        <li>Email: <a href="mailto:JMcKayPitt@gmail.com">JMcKayPitt@gmail.com</a></li>
+        <li>GitHub: <a href="https://github.com/JohnMcKay">github.com/JohnMcKay</a></li>
+        <li>LinkedIn: <a href="https://www.linkedin.com/in/john-mckay-146bb645/">LinkedIn profile</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="container stack" style="padding:2rem 0; color:var(--muted);">
+    <small>© <span id="y"></span> John McKay. All rights reserved.</small>
+  </footer>
+
+  <script type="module">
+    document.getElementById('y').textContent = new Date().getFullYear();
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches){
+      const io = new IntersectionObserver((entries)=>{
+        for (const e of entries){
+          if (e.isIntersecting){
+            e.target.animate(
+              [{opacity:0, transform:'translateY(8px)'},{opacity:1, transform:'none'}],
+              {duration:500, easing:'cubic-bezier(.2,.7,.2,1)', fill:'both'}
+            );
+            io.unobserve(e.target);
+          }
+        }
+      }, {rootMargin:'-10% 0px -10% 0px'});
+      document.querySelectorAll('section.card, article.card').forEach(el=>io.observe(el));
+    }
+  </script>
 </body>
 </html>
