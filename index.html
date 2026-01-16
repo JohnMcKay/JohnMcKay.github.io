@@ -5,15 +5,15 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta http-equiv="x-ua-compatible" content="ie=edge" />
   <title>John McKay, PhD</title>
-  <meta name="description" content="Personal site of John McKay: Machine Learning Engineer & Data Scientist." />
+  <meta name="description" content="John McKay — Machine Learning Engineer & Data Scientist" />
 
-  <!-- Critical CSS (performance) -->
+  <!-- ===== Modern UI: Critical CSS (non-destructive; content preserved) ===== -->
   <style>
     :root{
       --bg:#0b0c10; --panel:#111217; --text:#e9eef2; --muted:#a9b3bd;
-      --brand:#4da3ff; --accent:#8b5cf6; --radius:12px; --maxw:1200px;
+      --brand:#4da3ff; --accent:#8b5cf6; --radius:12px; --maxw:1080px;
       --shadow:0 6px 24px rgba(0,0,0,.25);
-      --step--1: clamp(.88rem,.84rem + .2vw,.98rem);
+      --step--1: clamp(.9rem,.84rem + .2vw,.98rem);
       --step-0: clamp(1rem,.95rem + .4vw,1.125rem);
       --step-1: clamp(1.25rem,1.1rem + 1vw,1.5rem);
       --step-2: clamp(1.5rem,1.2rem + 1.6vw,2rem);
@@ -29,137 +29,254 @@
       font:400 var(--step-0) ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
       -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
     }
+    img{ max-width:100%; height:auto; border-radius: calc(var(--radius) - 4px); }
     a{ color:var(--brand); text-decoration:none }
     a:hover{ text-decoration:underline }
-    img{ max-width:100%; height:auto; border-radius: calc(var(--radius) - 4px); }
-    .container{ width:min(100% - 2rem,var(--maxw)); margin-inline:auto }
+    :focus-visible{ outline:2px solid var(--brand); outline-offset:3px; border-radius:6px }
+    @media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important } }
+
+    .container{ width:min(100% - 2rem, var(--maxw)); margin-inline:auto }
     .stack{ display:grid; gap:clamp(1rem,2vw,2rem) }
     .cluster{ display:flex; flex-wrap:wrap; gap:.75rem; align-items:center }
+
+    header.site{
+      position:sticky; top:0; z-index:100;
+      backdrop-filter:blur(10px);
+      background: color-mix(in oklab, var(--bg), transparent 20%);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    nav ul{ list-style:none; margin:0; padding:0 }
+    nav a{ padding:.5rem .75rem; border-radius:999px }
+    nav a:is(:hover,:focus-visible){ background: color-mix(in oklab,var(--brand),transparent 85%) }
+
+    main{ padding-block: clamp(2rem,3vw,3.5rem) }
+    section.card{
+      background: var(--panel);
+      border:1px solid rgba(255,255,255,.06);
+      border-radius: var(--radius);
+      padding: clamp(1rem, 2vw, 2rem);
+      box-shadow: var(--shadow);
+    }
+
+    h1{ font-size:var(--step-3); line-height:1.1; margin:0 0 .25rem }
+    h2{ font-size:var(--step-2); line-height:1.15; margin:0 0 .25rem }
+    h3{ font-size:var(--step-1); margin:.25rem 0 }
+    p,li{ line-height:1.65; }
+    .muted{ color:var(--muted) }
+    .lead{ color:var(--muted); font-size:var(--step-1) }
+    .grid-two{ display:grid; gap:1rem; grid-template-columns: 1fr 1fr }
+    @media (max-width: 800px){ .grid-two{ grid-template-columns: 1fr } }
+
     .btn{
       display:inline-flex; align-items:center; gap:.5rem; padding:.7rem 1rem;
       border-radius:999px; background:linear-gradient(135deg,var(--brand),var(--accent));
-      color:#fff; box-shadow:var(--shadow); border:0;
+      color:#fff !important; box-shadow:var(--shadow); border:0;
     }
     .btn--ghost{
-      background:transparent; color:var(--brand);
+      background:transparent; color:var(--brand) !important;
       border:1px solid color-mix(in oklab, var(--brand), transparent 70%);
     }
-    header.site{
-      position:sticky; top:0; z-index:100; backdrop-filter:blur(10px);
-      background:color-mix(in oklab, var(--bg), transparent 20%);
-      border-bottom:1px solid rgba(255,255,255,.06);
-    }
-    nav .logo{ font-weight:700; letter-spacing:.2px }
-    nav ul{ list-style:none; margin:0; padding:0 }
-    nav a{ padding:.75rem 1rem; border-radius:999px }
-    main{ padding-block:clamp(2rem,3vw,4rem) }
-    section.card{
-      background:var(--panel); border:1px solid rgba(255,255,255,.06);
-      border-radius:var(--radius); padding:clamp(1rem,2vw,2rem); box-shadow:var(--shadow);
-    }
-    .hero{
-      display:grid; grid-template-columns:1.1fr .9fr;
-      gap:clamp(1rem,3vw,3rem); align-items:center;
-      padding-block:clamp(2rem,5vw,5rem);
-    }
-    @media (max-width:900px){ .hero{ grid-template-columns:1fr } }
-    h1{ font-size:var(--step-3); line-height:1.1; margin:0 0 .5rem }
-    h2{ font-size:var(--step-2); line-height:1.15; margin:0 0 .25rem }
-    p.lead{ color:var(--muted); font-size:var(--step-1) }
-    :focus-visible{ outline:2px solid var(--brand); outline-offset:3px; border-radius:6px }
-    @media (prefers-reduced-motion: reduce){
-      *{ animation:none !important; transition:none !important }
-    }
-    .muted{ color:var(--muted) }
-  </style>
 
-  <!-- Non-critical CSS (async) -->
-  <link rel="preload" href="css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="css/styles.css"></noscript>
+    footer{ color:var(--muted); padding:2rem 0 }
+    .list-tight li{ margin:.2rem 0 }
+  </style>
+  <!-- ===== /Modern UI CSS ===== -->
 </head>
 <body>
+
+  <!-- ===== Header ===== -->
   <header class="site">
-    <div class="container cluster" style="justify-content:space-between; padding:.6rem 0;">
-      <a class="logo" href="/">John McKay</a>
-      <nav aria-label="Primary">
-        <ul class="cluster" role="list">
-          <li><a href="#about">About</a></li>
-          <li><a href="#publications">Publications</a></li>
-          <li><a href="#talks">Talks</a></li>
-          <li><a href="#contact" class="btn btn--ghost">Contact</a></li>
-        </ul>
-      </nav>
+    <div class="container" style="padding:.75rem 0;">
+      <div class="cluster" style="justify-content:space-between">
+        <strong style="letter-spacing:.2px;">John McKay</strong>
+        <nav aria-label="Primary">
+          <ul class="cluster" role="list">
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#employment">Employment</a></li>
+            <li><a href="#pubs">Publications</a></li>
+            <li><a href="#personal">Personal</a></li>
+            <li><a href="resume.pdf" class="btn btn--ghost">Resume (PDF)</a></li>
+          </ul>
+        </nav>
+      </div>
     </div>
   </header>
 
   <main class="container stack">
-    <!-- HERO -->
-    <section class="hero">
-      <div class="stack">
-        <h1>John McKay, PhD</h1>
-        <p class="lead">Machine Learning Engineer & Data Scientist</p>
-        <div class="cluster">
-          <a class="btn" href="resume.pdf">View resume (PDF)</a>
-          <a class="btn btn--ghost" href="#publications">See publications</a>
-        </div>
+
+    <!-- ===== Hero ===== -->
+    <section class="card">
+      <h1>John McKay, PhD</h1>
+      <p class="lead">Machine Learning Engineer &amp; Data Scientist</p>
+      <div class="cluster">
+        <a class="btn" href="resume.pdf">View resume (PDF)</a>
+        <a class="btn btn--ghost" href="#pubs">See publications</a>
       </div>
-      <figure class="card">
-        <!-- Keep or remove if no image available -->
-        <img loading="eager" width="1200" height="800" alt="John presenting research"
-             src="figs/hero.avif" onerror="this.style.display='none'">
-      </figure>
     </section>
 
-    <!-- ABOUT: keep your existing text -->
+    <!-- ===== About ===== -->
     <section id="about" class="card stack" aria-labelledby="about-h">
-      <h2 id="about-h">About</h2>
+      <h2 id="about-h">About Me</h2>
       <p>
-        Hello! I'm John McKay, a research scientist focusing on applying machine learning
-        to transport service problems… <!-- Keep your current copy here -->
+        Hello! I'm John McKay, a research scientist for Amazon Transport Sciences where I focus
+        on applying machine learning to Amazon Freight/Inbound/other transport service problems.
+        This has included lane level forecasting problems for contract pricing, shipper
+        willingness-to-pay cost adjustments, and more! From July '20 – July '22 I applied my
+        skills to Alexa where, in summary, I did a bit of NLP and neural embedding design to fix
+        bugs and improve entity resolution. I have a PhD from Penn State where, under the
+        watchful eye of my advisor Vishal Monga, I focused on synthetic aperture image formation
+        and classification with neural nets. Before my time as an electrical engineer, I
+        investigated topics in mathematical biology, which was the focus of my undergraduate
+        research and masters degree. Simply put, there are few data science topics that I am not
+        interested in. If you see anything on this website you'd like to know more about, feel
+        free to contact me!  <!-- Source: live page content -->
+      </p>
+      <p class="muted">Contact: JMcKayPitt at gmail dot com</p>
+    </section>
+
+    <!-- ===== Education ===== -->
+    <section id="education" class="card stack" aria-labelledby="edu-h">
+      <h2 id="edu-h">Education</h2>
+      <div class="stack">
+        <div>
+          <h3>Pennsylvania State University &mdash; PhD Student (Jan 2015 &ndash; Jun 2018)</h3>
+          <ul class="list-tight">
+            <li>Dept. of Electrical Engineering &amp; Computer Science; Advisor: Dr. Vishal Monga</li>
+            <li>Research: sparse reconstruction-based classification, non-uniform FFTs, neural networks</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Arizona State University &mdash; Masters (Jan 2013 &ndash; Dec 2014)</h3>
+          <ul class="list-tight">
+            <li>School of Applied Mathematics for the Life and Social Sciences; Advisor: Dr. Yun Kang</li>
+            <li>Research: graph theory, social insect network models, deterministic epidemiological models, frame theory</li>
+          </ul>
+        </div>
+        <div>
+          <h3>University of Pittsburgh &mdash; B.S. (Aug 2008 &ndash; May 2012)</h3>
+          <ul class="list-tight">
+            <li>Majors: Pure Mathematics, Africana Studies (GPA 3.7)</li>
+            <li>Research Advisor: Dr. Eunha Shim &mdash; deterministic epidemiology, agent‑based models</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Employment ===== -->
+    <section id="employment" class="card stack" aria-labelledby="emp-h">
+      <h2 id="emp-h">Employment</h2>
+      <div class="stack">
+        <div>
+          <h3>Research Scientist II &mdash; Amazon (Cambridge/Boston, MA)</h3>
+          <p>
+            I design language networks to evaluate utterance relevance and rank entity options and
+            I write and implement ingestion methods for large‑scale knowledge graphs.
+          </p>
+        </div>
+        <div>
+          <h3>Imaging Scientist II &mdash; Indigo Ag (Boston, MA)</h3>
+          <p>
+            Established neural network infrastructure for hyperspectral image analysis pipeline of
+            crop treatment effects; designed tree ensemble models for treatment performance; helped
+            maintain automation tools that write to databases.
+          </p>
+        </div>
+        <div>
+          <h3>R&amp;D Engineer / Graduate Researcher &mdash; Penn State ARL (State College, PA)</h3>
+          <p>
+            Devised neural network architectures for limited‑training remote sensing imagery; resolved
+            motion‑induced errors in sonar imagery with signal processing; designed traditional
+            classifiers for raw acoustic and radar sensor outputs.
+          </p>
+        </div>
+        <div>
+          <h3>Business Analyst &mdash; Management Science Associates (Pittsburgh, PA)</h3>
+          <p>
+            Built statistical models to assess the impact of social media on consumer good sales;
+            segmented Twitter followers to gauge potential demographic targets; wrote agent‑based
+            models in Java to understand effects of company Twitter campaigns.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Publications ===== -->
+    <section id="pubs" class="card stack" aria-labelledby="pubs-h">
+      <h2 id="pubs-h">Publications &amp; Selected Materials</h2>
+      <ul class="stack" style="margin:0; padding-left:1.1rem;">
+        <li>
+          <strong>Robust Sonar ATR Through Bayesian Pose‑Corrected Sparse Classification</strong><br/>
+          John McKay, Vishal Monga, Raghu G. Raj &mdash; IEEE Trans. Geoscience &amp; Remote Sensing.
+          <!-- Original page listed "PDF bibtex" but external links aren’t in repo -->
+        </li>
+        <li>
+          <strong>Coupling Rendering and GANs for Artificial SAS Image Generation</strong><br/>
+          Albert Reed, Isaac D. Gerg, John McKay, Daniel C. Brown, David P. Williams, Suren Jayasuriya &mdash; OCEANS 2019.
+        </li>
+        <li>
+          <strong>Bridging the Gap: Simultaneous Fine Tuning for Data Re‑Balancing</strong><br/>
+          John McKay, Isaac D. Gerg, Vishal Monga &mdash; IGARSS 2018.
+        </li>
+        <li>
+          <strong>Fast Stochastic Hierarchical Bayesian MAP for Tomographic Imaging</strong><br/>
+          John McKay, Raghu G. Raj, Vishal Monga &mdash; Asilomar 2017.
+        </li>
+        <li>
+          <strong>Using Frame Theoretic Convolutional Gridding for Robust SAS Imaging</strong><br/>
+          John McKay, Anne Gelb, Vishal Monga, Raghu G. Raj &mdash; OCEANS 2017 (Student Poster finalist).
+        </li>
+        <li>
+          <strong>What’s Mine is Yours: Pretrained CNNs for Limited Training Sonar ATR</strong><br/>
+          John McKay, Isaac D. Gerg, Vishal Monga, Raghu G. Raj &mdash; OCEANS 2017 (Student Poster finalist).
+        </li>
+        <li>
+          <strong>Robust Sonar ATR with Pose‑Corrected Sparse RBC</strong><br/>
+          John McKay, Vishal Monga, Raghu G. Raj &mdash; OCEANS 2016.
+        </li>
+        <li>
+          <strong>Localized Dictionary Design for Geometrically Robust Sonar ATR</strong><br/>
+          John McKay, Vishal Monga, Raghu G. Raj &mdash; IGARSS 2016.
+        </li>
+        <li>
+          <strong>Discriminative Sparsity for Sonar ATR</strong><br/>
+          John McKay, Raghu G. Raj, Vishal Monga &mdash; OCEANS 2015.
+        </li>
+        <li>
+          <strong>Deep Learning for Skeptical Mathematicians</strong> — talk materials:
+          <a class="btn btn--ghost" href="CNNtalk.pdf">PDF</a>
+        </li>
+        <li>
+          <strong>The Unpredictable Nature of CNNs</strong> — talk materials:
+          <a class="btn btn--ghost" href="mckay2019pitt.pdf">PDF</a>
+        </li>
+        <li>
+          <strong>Beamer Template</strong> — <a class="btn btn--ghost" href="beamerTemplate.zip">ZIP</a>
+        </li>
+      </ul>
+      <p class="muted" style="margin:.5rem 0 0;">
+        Full resume: <a href="resume.pdf">resume.pdf</a>
       </p>
     </section>
 
-    <!-- PUBLICATIONS -->
-    <section id="publications" class="stack" aria-labelledby="pubs-h">
-      <h2 id="pubs-h">Publications</h2>
-      <div class="stack" style="display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1rem;">
-        <article class="card stack">
-          <h3>Neural Networks, Cost Functions, and What Happens When You Ignore Math</h3>
-          <p class="muted">Talk materials.</p>
-          <a class="btn btn--ghost" href="mckay2019pitt.pdf">Open PDF</a>
-        </article>
-        <article class="card stack">
-          <h3>Deep Learning: An Engineer’s Dream and a Mathematician’s Nightmare</h3>
-          <p class="muted">Talk materials.</p>
-          <a class="btn btn--ghost" href="CNNtalk.pdf">Open PDF</a>
-        </article>
-      </div>
+    <!-- ===== Personal ===== -->
+    <section id="personal" class="card stack" aria-labelledby="personal-h">
+      <h2 id="personal-h">Personal</h2>
+      <p>
+        I'm very proud of my two sisters, Mary McKay and Dr. Pilar McKay (co‑founder of the Silver Lake
+        Brewing Project). My mother has taught Spanish at SUNY Geneseo since 1989 and my dad is a high
+        school educator (who, during his time in Texas for Teach for America, earned the 2014–15
+        Edcouch‑Elsa Secondary Teacher of the Year award).
+      </p>
     </section>
 
-    <!-- TALKS -->
-    <section id="talks" class="card stack" aria-labelledby="talks-h">
-      <h2 id="talks-h">Talks</h2>
-      <ul>
-        <li><a href="CNNtalk.pdf">Deep Learning: An Engineer’s Dream and a Mathematician’s Nightmare (PDF)</a></li>
-        <li><a href="mckay2019pitt.pdf">Neural Networks, Cost Functions… (PDF)</a></li>
-      </ul>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="card stack" aria-labelledby="contact-h">
-      <h2 id="contact-h">Contact</h2>
-      <ul>
-        <li>Email: <a href="mailto:JMcKayPitt@gmail.com">JMcKayPitt@gmail.com</a></li>
-        <li>GitHub: <a href="https://github.com/JohnMcKay">github.com/JohnMcKay</a></li>
-        <li>LinkedIn: <a href="https://www.linkedin.com/in/john-mckay-146bb645/">LinkedIn profile</a></li>
-      </ul>
-    </section>
   </main>
 
-  <footer class="container stack" style="padding:2rem 0; color:var(--muted);">
+  <footer class="container">
     <small>© <span id="y"></span> John McKay. All rights reserved.</small>
   </footer>
 
+  <!-- Optional: tasteful in‑view fade (respects reduced motion) -->
   <script type="module">
     document.getElementById('y').textContent = new Date().getFullYear();
     if (!matchMedia('(prefers-reduced-motion: reduce)').matches){
@@ -174,7 +291,7 @@
           }
         }
       }, {rootMargin:'-10% 0px -10% 0px'});
-      document.querySelectorAll('section.card, article.card').forEach(el=>io.observe(el));
+      document.querySelectorAll('section.card, article').forEach(el=>io.observe(el));
     }
   </script>
 </body>
