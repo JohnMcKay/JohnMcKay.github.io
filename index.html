@@ -2,126 +2,428 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>John McKay, PhD</title>
-  <meta name="description" content="John McKay — Principal Data Scientist, applied machine learning and AI.">
+  <meta name="description" content="John McKay — Principal Data Scientist. Machine learning, applied AI, forecasting, and research." />
 
-  <link rel="icon" href="figs/ipal.png">
+  <!-- Favicon: include both variants (some older files omitted the dot) -->
+  <link rel="icon" type="image/png" href="figs/ipal.png" />
+  <link rel="icon" type="image/png" href="figs/ipalpng" />
 
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+  <!-- Fonts + icons (same vibe as original) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
   <style>
     :root{
+      /* Celtic FC-inspired */
       --bg:#0b0c10;
       --panel:#111217;
+      --panel2:#0f1116;
       --text:#e9eef2;
       --muted:#a9b3bd;
-      --brand:#009A44;
-      --line:rgba(255,255,255,.08);
+      --brand:#009A44;         /* Celtic green */
+      --brandSoft:rgba(0,154,68,.14);
+      --line:rgba(255,255,255,.09);
+      --shadow:0 10px 28px rgba(0,0,0,.38);
       --radius:14px;
-      --maxw:1100px;
+      --maxw:1120px;
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg:#ffffff;
+        --panel:#f7f8fa;
+        --panel2:#ffffff;
+        --text:#0b1220;
+        --muted:#5b6470;
+        --line:rgba(11,18,32,.12);
+        --shadow:0 10px 22px rgba(11,18,32,.10);
+        --brandSoft:rgba(0,154,68,.10);
+      }
     }
 
     *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
     body{
-      margin:0;
       background:var(--bg);
       color:var(--text);
-      font-family:Roboto,system-ui,-apple-system,Segoe UI,Arial,sans-serif;
-      line-height:1.65;
+      font:400 16px/1.65 "Roboto",system-ui,-apple-system,Segoe UI,Helvetica,Arial,sans-serif;
     }
     a{color:var(--brand);text-decoration:none}
     a:hover{text-decoration:underline}
+    img{max-width:100%;height:auto;display:block;border-radius:calc(var(--radius) - 6px)}
 
-    .container{
-      max-width:var(--maxw);
-      margin:0 auto;
-      padding:1.5rem 1rem;
-    }
+    .container{max-width:var(--maxw);margin:0 auto;padding:1.5rem 1rem}
 
+    /* No sticky header. No overlays. */
     header{
       border-bottom:1px solid var(--line);
-      margin-bottom:1.5rem;
+      padding-bottom:1rem;
+      margin-bottom:1.25rem;
+    }
+    .topbar{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.9rem 1.2rem;
+      align-items:baseline;
+      justify-content:space-between;
+    }
+    .brand{
+      font-weight:700;
+      letter-spacing:.03em;
+      display:flex;
+      align-items:baseline;
+      gap:.6rem;
+      white-space:nowrap;
+    }
+    nav ul{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:flex;
+      gap:.5rem;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    nav a{
+      display:inline-block;
+      padding:.34rem .65rem;
+      border-radius:999px;
+      border:1px solid transparent;
+      color:var(--text);
+    }
+    nav a:hover{
+      background:var(--brandSoft);
+      border-color:var(--line);
+      text-decoration:none;
     }
 
-    .grid{
+    .layout{
       display:grid;
-      grid-template-columns:320px 1fr;
-      gap:1.5rem;
+      grid-template-columns:360px 1fr;
+      gap:1.25rem;
+      align-items:start;
     }
-    @media (max-width:900px){
-      .grid{grid-template-columns:1fr}
+    @media (max-width: 920px){
+      .layout{grid-template-columns:1fr}
     }
 
     .card{
       background:var(--panel);
       border:1px solid var(--line);
       border-radius:var(--radius);
-      padding:1.25rem;
+      box-shadow:var(--shadow);
+      padding:1.2rem;
+    }
+    .muted{color:var(--muted)}
+    h1,h2,h3{line-height:1.25;margin:0 0 .6rem}
+    h1{font-size:2rem}
+    h2{font-size:1.25rem;margin-top:.15rem}
+    h3{font-size:1.05rem;margin-top:1rem}
+
+    .pill{
+      display:inline-block;
+      background:var(--brand);
+      color:#07110b;
+      font-weight:700;
+      border-radius:999px;
+      padding:.14rem .6rem;
+      font-size:.82rem;
+      margin-top:.45rem;
     }
 
-    h1,h2,h3{margin:.2rem 0 .6rem;line-height:1.25}
-    h1{font-size:2rem}
-    h2{font-size:1.25rem}
-    h3{font-size:1.05rem}
+    .links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.6rem .9rem;
+      margin-top:.8rem;
+      align-items:center;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:.45rem;
+      padding:.45rem .75rem;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:var(--panel2);
+      color:var(--text);
+      text-decoration:none;
+      box-shadow:0 8px 18px rgba(0,0,0,.18);
+    }
+    .btn:hover{
+      border-color:rgba(0,154,68,.55);
+      text-decoration:none;
+    }
 
-    .muted{color:var(--muted)}
-    img{max-width:100%;border-radius:10px}
+    /* Compact employment + publications */
+    .compact h3{margin-top:.9rem}
+    .compact p{margin:.35rem 0}
+    .compact ul{margin:.35rem 0 .1rem 1.05rem;padding:0}
+    .compact li{margin:.2rem 0}
+
+    .pub{
+      padding-top:1rem;
+      margin-top:1rem;
+      border-top:1px solid var(--line);
+    }
+    .pub:first-child{border-top:none;padding-top:0;margin-top:0}
+    .pub-title{font-weight:700;margin:0 0 .2rem}
+    .pub-authors{margin:0 0 .15rem;color:var(--muted)}
+    .pub-venue{margin:0 0 .45rem;color:var(--muted);font-style:italic}
+    .pub-links a{margin-right:.75rem;font-weight:600;white-space:nowrap}
+
+    footer{
+      border-top:1px solid var(--line);
+      margin-top:2.5rem;
+      padding:1.3rem 0;
+      text-align:center;
+      color:var(--muted);
+      font-size:.95rem;
+    }
   </style>
 </head>
 
 <body>
+  <header class="container">
+    <div class="topbar">
+      <div class="brand">John McKay</div>
+      <nav aria-label="Site navigation">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#employment">Employment</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#pubs">Publications</a></li>
+          <li><a href="#presentations">Presentations</a></li>
+          <li><a href="#personal">Personal</a></li>
+          <li><a href="resume.pdf">CV</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-<header class="container">
-  <h1>John McKay</h1>
-</header>
+  <main class="container layout">
+    <!-- LEFT COLUMN -->
+    <aside>
+      <section class="card">
+        <img src="figs/Profile.png" alt="John McKay"
+             onerror="this.onerror=null; this.src='figs/Profilepng';" />
+        <h1 style="margin-top:.9rem;">John McKay, PhD</h1>
+        <div class="muted">Principal Data Scientist</div>
+        <div class="pill">Machine Learning &amp; Applied AI</div>
 
-<main class="container grid">
+        <div class="links">
+          <a class="btn" href="https://scholar.google.com/citations?user=nzzzZrUAAAAJ" aria-label="Google Scholar">
+            <i class="fa fa-google" aria-hidden="true"></i> Scholar
+          </a>
+          <a class="btn" href="https://www.linkedin.com/in/john-mckay-146bb645/" aria-label="LinkedIn">
+            <i class="fa fa-linkedin-square" aria-hidden="true"></i> LinkedIn
+          </a>
+          <a class="btn" href="resume.pdf" aria-label="CV PDF">
+            <i class="fa fa-file-pdf-o" aria-hidden="true"></i> CV (PDF)
+          </a>
+        </div>
 
-  <!-- LEFT -->
-  <aside class="card">
-    <img src="figs/Profile.png" alt="John McKay">
-    <h2>John McKay, PhD</h2>
-    <div class="muted">Principal Data Scientist</div>
-    <p class="muted">JMcKayPitt at gmail dot com</p>
-    <p>
-      <a href="resume.pdf">CV (PDF)</a><br>
-      <a href="https://scholar.google.com/citations?user=nzzzZrUAAAAJ">Google Scholar</a><br>
-      <a href="https://www.linkedin.com/in/john-mckay-146bb645/">LinkedIn</a>
-    </p>
-  </aside>
+        <p class="muted" style="margin:.9rem 0 0;">
+          Contact: <strong>JMcKayPitt</strong> at <strong>gmail</strong> dot <strong>com</strong>
+        </p>
+      </section>
+    </aside>
 
-  <!-- RIGHT -->
-  <section class="card">
-    <h2>About</h2>
-    <p>
-      Principal Data Scientist in Microsoft’s Industry Solutions Engineering (Studio 1–3),
-      building high‑impact AI tools for the largest enterprise Azure clients,
-      with a focus on the financial industry.
-    </p>
-    <p>
-      Previously Senior Research Scientist at Amazon Transport Sciences,
-      applying machine learning to freight and inbound transportation problems
-      including lane‑level forecasting, contract pricing, and willingness‑to‑pay modeling.
-    </p>
+    <!-- RIGHT COLUMN -->
+    <div>
+      <section id="about" class="card">
+        <h2>About</h2>
+        <p>
+          Principal Data Scientist at Microsoft Industry Solutions Engineering (Studio 1–3), creating high-impact AI tools for
+          the largest enterprise Azure clients with a focus on the financial industry.
+        </p>
+        <p>
+          Previously: research scientist at Amazon Transport Sciences, applying machine learning to Amazon Freight / inbound
+          transport service problems (lane-level forecasting, contract pricing, shipper willingness-to-pay, cost adjustments).
+          I also applied skills to Alexa: NLP, neural embeddings, design, fixing bugs, improving entity resolution.
+        </p>
+        <p>
+          PhD from Penn State University (advisor:
+          <a href="http://www.ee.psu.edu/Directory/FacultyInfo/Monga/MongaProfilePage.aspx">Dr. Vishal Monga</a>)
+          focused on synthetic aperture image formation and classification with neural networks.
+          My background includes electrical engineering and mathematical biology; undergraduate and master’s research spanned
+          applied mathematics and epidemiological / network modeling.
+        </p>
+        <p class="muted">If you see anything on the website and want to know more, contact me.</p>
+      </section>
 
-    <h2 style="margin-top:1.2rem;">Employment</h2>
+      <section id="employment" class="card compact" style="margin-top:1.25rem;">
+        <h2>Employment</h2>
 
-    <h3>Principal Data Scientist — Microsoft</h3>
-    <p class="muted">
-      Industry Solutions Engineering (Studio 1–3).
-      Enterprise‑scale AI systems for Azure clients in the financial sector.
-    </p>
+        <h3>Principal Data Scientist — Microsoft Industry Solutions Engineering (Studio 1–3)</h3>
+        <ul>
+          <li>Creating high-impact AI tools for the largest enterprise Azure clients (financial industry focus).</li>
+          <li>Applied ML / LLM systems, evaluation, and production delivery in complex enterprise environments.</li>
+        </ul>
 
-    <h3>Senior Research Scientist — Amazon</h3>
-    <p class="muted">
-      Transport Sciences. Forecasting, pricing, and applied ML systems;
-      contributions to Alexa NLP (embeddings, entity resolution).
-    </p>
-  </section>
+        <h3>Senior Research Scientist — Amazon Transport Sciences</h3>
+        <ul>
+          <li>Amazon Freight / inbound transportation ML: lane-level forecasting, contract pricing, WTP modeling, cost adjustments.</li>
+          <li>Alexa NLP work: neural embeddings, entity resolution improvements, and engineering support.</li>
+        </ul>
 
-</main>
+        <h3>Imaging Scientist II — Indigo Ag (Boston, MA)</h3>
+        <p>Established neural network infrastructure for hyperspectral image analysis of crop treatment effects; designed tree ensemble models to predict treatment performance; maintained automation tools and databases.</p>
 
+        <h3>Research &amp; Development Engineer — Penn State Applied Research Laboratory (State College, PA)</h3>
+        <p>Devised neural network architectures for limited-training remote sensing imagery; resolved motion-induced errors in sonar imagery; applied signal processing techniques and traditional classifiers for raw acoustic / radar sensor outputs.</p>
+
+        <h3>Business Analyst — Management Science Associates (Pittsburgh, PA)</h3>
+        <p>Built statistical models assessing impact of social media on consumer goods sales; developed agent-based models in Java to understand effects of company Twitter campaigns.</p>
+      </section>
+
+      <section id="education" class="card compact" style="margin-top:1.25rem;">
+        <h2>Education</h2>
+
+        <h3>Pennsylvania State University</h3>
+        <p class="muted">PhD Student — Dept. of Electrical Engineering &amp; Computer Science</p>
+        <p>Advised by <a href="http://www.ee.psu.edu/Directory/FacultyInfo/Monga/MongaProfilePage.aspx">Dr. Vishal Monga</a></p>
+        <p>Research: sparse reconstruction–based classification, non-uniform fast Fourier transforms, neural networks.</p>
+
+        <h3>Arizona State University</h3>
+        <p class="muted">Masters — School of Applied Mathematics for Life and Social Sciences</p>
+        <p>Advised by <a href="http://www.public.asu.edu/~ykang3/">Dr. Yun Kang</a></p>
+        <p>Research: graph theory, social insect network models, deterministic epidemiological models, frame theory.</p>
+
+        <h3>University of Pittsburgh</h3>
+        <p class="muted">Bachelor’s of Science (GPA 3.7) — Majors: Pure Mathematics, Africana Studies</p>
+        <p>Research: deterministic epidemiology models; agent-based models.</p>
+      </section>
+
+      <section id="pubs" class="card" style="margin-top:1.25rem;">
+        <h2>Publications</h2>
+
+        <div class="pub">
+          <div class="pub-title">Robust Sonar ATR Through Bayesian Pose-Corrected Sparse Classification</div>
+          <div class="pub-authors">John McKay, Vishal Monga, Raghu G. Raj</div>
+          <div class="pub-venue">IEEE Transactions on Geoscience and Remote Sensing</div>
+          <div class="pub-links">
+            <a href="https://arxiv.org/pdf/1706.08590.pdf">PDF</a>
+            <a href="bibs/tgars17mckay.txt">bibtex</a>
+          </div>
+        </div>
+
+        <div class="pub">
+          <div class="pub-title">Coupling Rendering Generative Adversarial Networks: Artificial SAS Image Generation</div>
+          <div class="pub-authors">Albert Reed, Isaac D. Gerg, John McKay, Daniel C. Brown, David P. Williams, Suren Jayasuriya</div>
+          <div class="pub-venue">OCEANS 2019 MTS/IEEE Seattle</div>
+          <div class="pub-links">
+            <a href="https://web.asu.edu/sites/default/files/imaging-lyceum/files/sasgan.pdf">PDF</a>
+            <span class="muted">bibtex: tbd</span>
+          </div>
+        </div>
+
+        <div class="pub">
+          <div class="pub-title">Bridging the Gap: Simultaneous Fine-Tuning for Data Re-Balancing</div>
+          <div class="pub-authors">John McKay, Isaac D. Gerg, Vishal Monga</div>
+          <div class="pub-venue">IGARSS 2018</div>
+          <div class="pub-links">
+            <a href="https://arxiv.org/pdf/1801.02548.pdf">PDF</a>
+            <a href="bibs/igarss18mckay.txt">bibtex</a>
+          </div>
+        </div>
+
+        <div class="pub">
+          <div class="pub-title">Fast Stochastic Hierarchical Bayesian MAP Tomographic Imaging</div>
+          <div class="pub-authors">John McKay, Raghu G. Raj, Vishal Monga</div>
+          <div class="pub-venue">2017 51st Asilomar Conference on Signals, Systems, &amp; Computers</div>
+          <div class="pub-links">
+            <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8335171">PDF</a>
+            <span class="muted">bibtex: tbd</span>
+          </div>
+        </div>
+
+        <div class="pub">
+          <div class="pub-title">Frame Theoretic Convolutional Gridding for Robust Synthetic Aperture Sonar Imaging</div>
+          <div class="pub-authors">John McKay, Anne Gelb, Vishal Monga, Raghu G. Raj</div>
+          <div class="pub-venue">OCEANS 2017 MTS/IEEE Anchorage (Finalist, Student Poster Contest)</div>
+          <div class="pub-links">
+            <a href="https://arxiv.org/pdf/1706.08575.pdf">PDF</a>
+            <a href="bibs/oceans17mckayA.txt">bibtex</a>
+            <a href="2d_fcg.zip">Code</a>
+          </div>
+        </div>
+
+        <div class="pub">
+          <div class="pub-title">Pretrained CNNs for Limited Training Sonar ATR</div>
+          <div class="pub-authors">John McKay, Isaac D. Gerg, Vishal Monga, Raghu G. Raj</div>
+          <div class="pub-venue">OCEANS 2017 MTS/IEEE Anchorage</div>
+          <div class="pub-links">
+            <a href="https://arxiv.org/pdf/1706.09858.pdf">PDF</a>
+            <a href="bibs/oceans17mckayBtxt">bibtex</a>
+          </div>
+        </div>
+
+        <div class="pub">
+          <div class="pub-title">Robust Sonar ATR with Pose-Corrected Sparse Reconstruction-Based Classification</div>
+          <div class="pub-authors">John McKay, Vishal Monga, Raghu G. Raj</div>
+          <div class="pub-venue">OCEANS 2016 MTS/IEEE Monterey (Finalist, Student Poster Contest)</div>
+          <div class="pub-links">
+            <a href="https://ieeexplore.ieee.org/abstract/document/7761189/">PDF</a>
+            <a href="bibs/oceans16mckay.txt">bibtex</a>
+          </div>
+        </div>
+
+        <div class="pub">
+          <div class="pub-title">Localized Dictionary Design for Geometrically Robust Sonar ATR</div>
+          <div class="pub-authors">John McKay, Vishal Monga, Raghu G. Raj</div>
+          <div class="pub-venue">IGARSS 2016</div>
+          <div class="pub-links">
+            <a href="https://arxiv.org/pdf/1601.03323.pdf">PDF</a>
+            <a href="bibs/igarss16mckay.txt">bibtex</a>
+          </div>
+        </div>
+
+        <div class="pub">
+          <div class="pub-title">Discriminative Sparsity for Sonar ATR</div>
+          <div class="pub-authors">John McKay, Raghu G. Raj, Vishal Monga</div>
+          <div class="pub-venue">OCEANS 2015 MTS/IEEE Washington</div>
+          <div class="pub-links">
+            <a href="https://arxiv.org/pdf/1601.00119.pdf">PDF</a>
+            <a href="bibs/oceans15mckay.txt">bibtex</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="presentations" class="card" style="margin-top:1.25rem;">
+        <h2>Presentations &amp; Templates</h2>
+        <div class="links">
+          <a class="btn" href="CNNtalk.pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Deep Learning for Skeptical Mathematicians (PDF)</a>
+          <a class="btn" href="mckay2019pitt.pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Unpredictable Nature of CNNs (PDF)</a>
+          <a class="btn" href="beamerTemplate.zip"><i class="fa fa-file-archive-o" aria-hidden="true"></i> Beamer Template (ZIP)</a>
+        </div>
+      </section>
+
+            <section id="personal" class="card" style="margin-top:1.25rem;">
+        <h2>Personal</h2>
+        <p>
+          Proud of my sisters (<a href="https://sociology.osu.edu/people/mckay.93">Mary McKay</a>,
+          Dr. Pilar McKay; co-founder <a href="https://silverlakebrewingproject.com/">Silver Lake Brewing Project</a>).
+          My mother taught Spanish at SUNY Geneseo since 1989. My dad is a high school educator (Teach for America);
+          he earned the <a href="https://trackbill.com/bill/tx-hr906-congratulating-stan-mckay-of-edcouch-elsa-high-school-on-being-named-the-2014-2015-edcouch-elsa-independent-school-district-secondary-teacher-of-the-year/1148961/">2014–15 Edcouch–Elsa Secondary Teacher of the Year</a> award.
+        </p>
+      </section>
+
+      <section class="card" style="margin-top:1.25rem; padding:0;">
+        <img src="figs/az.jpg" alt="Arizona"
+             onerror="this.onerror=null; this.src='figs/az. jpg';" />
+      </section>
+
+      <footer>
+        <span id="y"></span> John McKay. All rights reserved.
+      </footer>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
