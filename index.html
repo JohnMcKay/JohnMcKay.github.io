@@ -1,170 +1,180 @@
+
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>John McKay, PhD</title>
-<meta name="description" content="John McKay — Machine Learning Engineer & Data Scientist" />
+<meta name="description" content="John McKay — Research Scientist, Machine Learning">
 
 <style>
 :root{
-  --bg:#0b0c10; --panel:#111217; --text:#e9eef2; --muted:#a9b3bd;
-  --brand:#009A44; --accent:#00d4ff; /* Celtic green + cool accent */
-  --radius:14px; --maxw:1080px; --shadow:0 8px 32px rgba(0,0,0,.35);
-  --step--1: clamp(.9rem,.84rem + .2vw,.98rem);
-  --step-0: clamp(1rem,.95rem + .4vw,1.125rem);
-  --step-1: clamp(1.25rem,1.1rem + 1vw,1.55rem);
-  --step-2: clamp(1.6rem,1.3rem + 1.8vw,2.2rem);
-  --step-3: clamp(2.4rem,1.8rem + 3vw,3.2rem);
-}
-@media(prefers-color-scheme:light){
-  :root{--bg:#fff;--panel:#f7f8fa;--text:#0b1220;--muted:#5b6470;}
+  --bg:#0b0c10;
+  --panel:#111217;
+  --text:#e9eef2;
+  --muted:#a9b3bd;
+  --brand:#009A44; /* Celtic FC green */
+  --radius:14px;
+  --maxw:1100px;
+  --shadow:0 8px 28px rgba(0,0,0,.35);
 }
 *{box-sizing:border-box}
 body{
-  margin:0;background:var(--bg);color:var(--text);
-  font:400 var(--step-0) ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto;
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font:400 1rem system-ui,-apple-system,Segoe UI,Roboto;
+  line-height:1.65;
 }
-img{max-width:100%;height:auto;border-radius:calc(var(--radius)-4px);}
 a{color:var(--brand);text-decoration:none}
 a:hover{text-decoration:underline}
-header.site{
-  position:sticky;top:0;z-index:100;
-  backdrop-filter:blur(12px);
-  background:color-mix(in oklab,var(--bg),transparent 15%);
-  border-bottom:1px solid rgba(255,255,255,.08);
-  box-shadow:0 4px 12px rgba(0,0,0,.25);
-}
-nav ul{list-style:none;margin:0;padding:0}
-nav a{padding:.6rem .9rem;border-radius:999px}
-nav a:is(:hover,:focus-visible){background:color-mix(in oklab,var(--brand),transparent 85%)}
+img{max-width:100%;border-radius:10px}
 .container{width:min(100% - 2rem,var(--maxw));margin-inline:auto}
-.stack{display:grid;gap:clamp(1rem,2vw,2rem)}
-section.card{
-  background:var(--panel);border-radius:var(--radius);
-  padding:clamp(1rem,2vw,2rem);box-shadow:var(--shadow);
-  transition:transform .3s ease,box-shadow .3s ease;
+section{
+  background:var(--panel);
+  border-radius:var(--radius);
+  padding:2rem;
+  box-shadow:var(--shadow);
 }
-section.card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,.4)}
-h1{font-size:var(--step-3);margin:0 0 .5rem}
-h2{font-size:var(--step-2);margin:0 0 .25rem}
-h3{font-size:var(--step-1);margin:.5rem 0}
-p,li{line-height:1.65}
-.btn{
-  display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1rem;
-  border-radius:999px;background:linear-gradient(135deg,var(--brand),var(--accent));
-  color:#fff!important;box-shadow:var(--shadow);border:0;
+.stack{display:grid;gap:2rem}
+h1{margin:0;font-size:2.6rem}
+h2{margin:0 0 .5rem}
+h3{margin:1rem 0 .25rem}
+p{margin:.5rem 0}
+
+header{
+  position:sticky;
+  top:0;
+  backdrop-filter:blur(10px);
+  background:rgba(11,12,16,.85);
+  border-bottom:1px solid rgba(255,255,255,.08);
 }
-.btn--ghost{
-  background:transparent;color:var(--brand)!important;
-  border:1px solid color-mix(in oklab,var(--brand),transparent 70%);
+nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 0}
+nav a{margin-left:1rem}
+
+.grid{
+  display:grid;
+  grid-template-columns:32% 1fr;
+  gap:2rem;
 }
-footer{color:var(--muted);padding:2rem 0;text-align:center}
+@media(max-width:900px){
+  .grid{grid-template-columns:1fr}
+}
+cite{font-style:normal;color:var(--muted)}
+.pub{border-top:1px solid rgba(255,255,255,.08);padding-top:1rem;margin-top:1rem}
+.badge{color:var(--brand);font-weight:600}
+footer{text-align:center;color:var(--muted);padding:3rem 0}
 </style>
 </head>
+
 <body>
 
-<header class="site">
-  <div class="container cluster" style="justify-content:space-between;padding:.75rem 0;">
-    <strong style="letter-spacing:.2px;">John McKay</strong>
+<header>
+  <div class="container">
     <nav>
-      <ul class="cluster">
-        <li><a href="#about">About</a></li>
-        <li><a href="#employment">Employment</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#pubs">Publications</a></li>
-        <li><a href="#presentations">Presentations</a></li>
-        <li><a href="#personal">Personal</a></li>
-        <li><a href="resume.pdf" class="btn btn--ghost">Resume</a></li>
-      </ul>
+      <strong>John McKay</strong>
+      <div>
+        <a href="#about">About</a>
+        <a href="#publications">Publications</a>
+        <a href="resume.pdf">CV</a>
+      </div>
     </nav>
   </div>
 </header>
 
-<main class="container stack">
-  <!-- Hero -->
-  <section class="card" style="padding:0;">
-    <img src="figs/hero.jpg" alt="John McKay" onerror="this.style.display='none'">
-    <div style="padding:1.5rem;">
-      <h1>John McKay, PhD</h1>
-      <p class="lead">Machine Learning Engineer & Data Scientist</p>
-      <div class="cluster">
-        <a class="btn" href="resume.pdf">View Resume</a>
-        <a class="btn btn--ghost" href="#pubs">Publications</a>
-      </div>
-    </div>
-  </section>
+<main class="container stack" style="margin-top:2rem">
 
-  <!-- About -->
-  <section id="about" class="card stack">
-    <h2>About Me</h2>
-    <p>Hello! I'm John McKay, a research scientist for Amazon Transport Sciences where I focus on applying machine learning to Amazon Freight/Inbound/other transport service problems. This has included lane level forecasting problems for contract pricing, shipper willingness-to-pay cost adjustments, and more! From July '20 – July '22 I applied my skills to Alexa where, in summary, I did a bit of NLP and neural embedding design to fix bugs and improve entity resolution. I have a PhD from Penn State where, under the watchful eye of my advisor Vishal Monga, I focused on synthetic aperture image formation and classification with neural nets. Before my time as an electrical engineer, I investigated topics in mathematical biology, which was the focus of my undergraduate research and masters degree.</p>
-    <p class="muted">Contact: JMcKayPitt at gmail dot com</p>
-  </section>
+<section class="grid">
+  <div>
+    <img src="figs/Profile.png" alt="John McKay">
+    <h2 style="margin-top:1rem">John McKay, PhD</h2>
+    <p class="badge">Research Scientist · Machine Learning</p>
+    <p>
+      <a href="https://scholar.google.com/citations?user=nzzzZrUAAAAJ">Google Scholar</a><br>
+      <a href="https://www.linkedin.com/in/john-mckay-146bb645">LinkedIn</a><br>
+      JMcKayPitt at gmail dot com
+    </p>
+  </div>
 
-  <!-- Employment -->
-  <section id="employment" class="card stack">
-    <h2>Employment</h2>
-    <h3>Research Scientist II — Amazon</h3>
-    <p>I design language networks to evaluate utterance relevance and rank entity options and write ingestion methods for large-scale knowledge graphs.</p>
-    <h3>Imaging Scientist II — Indigo Ag</h3>
-    <p>Established neural network infrastructure for hyperspectral image analysis pipeline of crop treatment effects; designed tree ensemble models for treatment performance.</p>
-    <h3>R&D Engineer — Penn State ARL</h3>
-    <p>Devised neural network architectures for limited-training remote sensing imagery; resolved motion-induced errors in sonar imagery.</p>
-    <h3>Business Analyst — Management Science Associates</h3>
-    <p>Built statistical models to assess the impact of social media on consumer good sales; wrote agent-based models in Java.</p>
-  </section>
+  <div id="about" class="stack">
+    <section>
+      <h2>About</h2>
+      <p>
+        I am a research scientist at Amazon Transport Sciences, where I focus on
+        applying machine learning to freight and inbound transportation problems,
+        including lane‑level forecasting, contract pricing, and shipper
+        willingness‑to‑pay modeling.
+      </p>
+      <p>
+        Previously, I worked on Alexa, designing NLP systems and neural embeddings
+        to improve entity resolution. I earned my PhD from Penn State University
+        under the advisement of
+        <a href="http://www.ee.psu.edu/Directory/FacultyInfo/Monga/MongaProfilePage.aspx">
+          Dr. Vishal Monga</a>, focusing on synthetic aperture image formation
+        and classification with neural networks.
+      </p>
+    </section>
 
-  <!-- Education -->
-  <section id="education" class="card stack">
-    <h2>Education</h2>
-    <h3>Pennsylvania State University — PhD</h3>
-    <p>Research: sparse reconstruction-based classification, non-uniform FFTs, neural networks.</p>
-    <h3>Arizona State University — Masters</h3>
-    <p>Research: graph theory, social insect network models, deterministic epidemiological models.</p>
-    <h3>University of Pittsburgh — B.S.</h3>
-    <p>Majors: Pure Mathematics, Africana Studies (GPA 3.7).</p>
-  </section>
+    <section>
+      <h2>Education</h2>
+      <p><strong>Penn State University</strong> — PhD, Electrical Engineering</p>
+      <p><strong>Arizona State University</strong> — MS, Applied Mathematics</p>
+      <p><strong>University of Pittsburgh</strong> — BS, Pure Mathematics & Africana Studies</p>
+    </section>
+  </div>
+</section>
 
-  <!-- Publications -->
-  <section id="pubs" class="card stack">
-    <h2>Publications</h2>
-    <ul>
-      <li>Robust Sonar ATR Through Bayesian Pose-Corrected Sparse Classification — IEEE TGRS</li>
-      <li>Coupling Rendering and GANs for Artificial SAS Image Generation — OCEANS 2019</li>
-      <li>Bridging the Gap: Simultaneous Fine Tuning for Data Re-Balancing — IGARSS 2018</li>
-      <li>Fast Stochastic Hierarchical Bayesian MAP for Tomographic Imaging — Asilomar 2017</li>
-      <li>Using Frame Theoretic Convolutional Gridding for Robust SAS Imaging — OCEANS 2017</li>
-      <li>What’s Mine is Yours: Pretrained CNNs for Limited Training Sonar ATR — OCEANS 2017</li>
-      <li>Robust Sonar ATR with Pose-Corrected Sparse RBC — OCEANS 2016</li>
-      <li>Localized Dictionary Design for Geometrically Robust Sonar ATR — IGARSS 2016</li>
-      <li>Discriminative Sparsity for Sonar ATR — OCEANS 2015</li>
-    </ul>
-  </section>
+<section id="publications">
+  <h2>Selected Publications</h2>
 
-  <!-- Presentations & Templates -->
-  <section id="presentations" class="card stack">
-    <h2>Presentations & Templates</h2>
-    <div class="cluster">
-      <a class="btn btn--ghost" href="CNNtalk.pdf">Deep Learning for Skeptical Mathematicians — PDF</a>
-      <a class="btn btn--ghost" href="mckay2019pitt.pdf">The Unpredictable Nature of CNNs — PDF</a>
-      <a class="btn btn--ghost" href="beamerTemplate.zip">Beamer Template — ZIP</a>
-    </div>
-  </section>
+  <div class="pub">
+    <p><strong>Robust Sonar ATR Through Bayesian Pose‑Corrected Sparse Classification</strong><br>
+    <cite>IEEE Transactions on Geoscience and Remote Sensing</cite></p>
+    <a href="https://arxiv.org/pdf/1706.08590.pdf">PDF</a> ·
+    <a href="bibs/tgars17mckay.txt">BibTeX</a>
+  </div>
 
-  <!-- Personal -->
-  <section id="personal" class="card stack">
-    <h2>Personal</h2>
-    <p>I'm very proud of my two sisters, Mary McKay and Dr. Pilar McKay (co-founder of the Silver Lake Brewing Project). My mother has taught Spanish at SUNY Geneseo since 1989 and my dad is a high school educator (who, during his time in Texas for Teach for America, earned the 2014–15 Edcouch-Elsa Secondary Teacher of the Year award).</p>
-  </section>
+  <div class="pub">
+    <p><strong>Coupling Rendering and GANs for Artificial SAS Image Generation</strong><br>
+    <cite>OCEANS 2019</cite></p>
+    <a href="https://web.asu.edu/sites/default/files/imaging-lyceum/files/sasgan.pdf">PDF</a>
+  </div>
+
+  <div class="pub">
+    <p><strong>Bridging the Gap: Simultaneous Fine‑Tuning and Data Re‑Balancing</strong><br>
+    <cite>IGARSS 2018</cite></p>
+    <a href="https://arxiv.org/pdf/1801.02548.pdf">PDF</a> ·
+    <a href="bibs/igarss18mckay.txt">BibTeX</a>
+  </div>
+
+  <p style="margin-top:1rem"><a href="#top">↑ Back to top</a></p>
+</section>
+
+<section>
+  <h2>Talks & Materials</h2>
+  <p><a href="CNNtalk.pdf">Deep Learning for Skeptical Mathematicians (PDF)</a></p>
+  <p><a href="mckay2019pitt.pdf">The Unpredictable Nature of CNNs (PDF)</a></p>
+  <p><a href="beamerTemplate.zip">Beamer Template (ZIP)</a></p>
+</section>
+
+<section>
+  <h2>Personal</h2>
+  <p>
+    I’m proud of my sisters Mary McKay and Dr. Pilar McKay (co‑founder of the
+    Silver Lake Brewing Project). My parents are longtime educators.
+  </p>
+  <img src="figs/az.jpg" alt="Arizona">
+</section>
+
 </main>
 
 <footer>
-  © <span id="y"></span> John McKay. All rights reserved.
+© <span id="y"></span> John McKay
 </footer>
 
 <script>
-document.getElementById('y').textContent=new Date().getFullYear();
+document.getElementById("y").textContent=new Date().getFullYear();
 </script>
+
 </body>
 </html>
